@@ -1,33 +1,30 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
-  Routes,
-  Route,
   useLocation
 } from 'react-router-dom';
-
-import './css/style.css';
+import Sidebar from './partials/Sidebar';
 
 import './charts/ChartjsConfig';
 
 // Import pages
-import Dashboard from './pages/Dashboard';
+import AppRoutes from './Routes';
+
+import { NblocksProvider } from "@nebulr-group/nblocks-react";
 
 function App() {
 
   const location = useLocation();
-
-  useEffect(() => {
-    document.querySelector('html').style.scrollBehavior = 'auto'
-    window.scroll({ top: 0 })
-    document.querySelector('html').style.scrollBehavior = ''
-  }, [location.pathname]); // triggered on route change
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <>
-      <Routes>
-        <Route exact path="/" element={<Dashboard />} />
-      </Routes>
-    </>
+    <NblocksProvider config={{}}>
+        <div className="flex h-screen overflow-hidden justify-center">
+          {['/dashboard', '/analytics'].includes(location.pathname) && (
+            <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+          )}
+          <AppRoutes />
+      </div>
+    </NblocksProvider>
   );
 }
 
