@@ -24,3 +24,31 @@ npm run dev
 ```
 npm run build
 ```
+
+## Example cases
+### Restrict a view for certain subscription plan
+
+Update the route for `/analytics` found in *src/Routes.jsx* and wrap it with the *PlanAccessGuard* component.
+
+```javascript
+ <Route
+        exact
+        path="/analytics"
+        element={
+          <AuthGuard>
+            <PlanAccessGuard plans={['PREMIUM']}>
+                <Analytics />
+            </PlanAccessGuard>
+          </AuthGuard>
+        }
+      />
+```
+
+Update the side menu bar, found in *src/partials/Sidebar.jsx* to remove the link to `/analytics` by wrapping it with the *PlanAccessControllComponent*.
+
+```javascript
+{/* The clickable analytics button (Only for premium users) */}
+<PlanAccessControllComponent plans={['PREMIUM']}>
+    <AnalyticsButton />
+</PlanAccessControllComponent>
+```

@@ -17,12 +17,12 @@ function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <NblocksProvider config={{}}>
-        <div className="flex h-screen overflow-hidden justify-center">
-          {['/dashboard', '/analytics'].includes(location.pathname) && (
-            <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-          )}
-          <AppRoutes />
+    <NblocksProvider config={{signup: true}}>
+      <div className="flex h-screen overflow-hidden justify-center">
+        {['/dashboard', '/analytics'].includes(location.pathname) && (
+          <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+        )}
+        <AppRoutes />
       </div>
     </NblocksProvider>
   );
