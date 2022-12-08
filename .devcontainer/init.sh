@@ -1,4 +1,4 @@
-#!/bin/bashs
+#!/bin/bash
 ## Usage
 ## ./init_local.sh WORKSPACE_FOLDER_PATH
 PWD=$(dirname $0)
@@ -14,4 +14,4 @@ git config --global user.email $GIT_EMAIL
 git config --global user.name $GIT_NAME
 
 echo "Done dev specific initializing, running workspace_folder/init.sh..."
-. $1/init.shx   
+. $1/init.sh
