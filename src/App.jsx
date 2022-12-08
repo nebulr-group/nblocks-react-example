@@ -17,7 +17,7 @@ function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <NblocksProvider config={{signup: true}}>
+    <NblocksProvider config={{signup: true, passwordValidation: false}}>
       <div className="flex h-screen overflow-hidden justify-center">
         {['/dashboard', '/analytics'].includes(location.pathname) && (
           <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
