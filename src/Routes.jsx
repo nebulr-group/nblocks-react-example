@@ -32,7 +32,7 @@ function AppRoutes() {
         path="/analytics"
         element={
           <NBAuthGuard>
-            <NBPlanAccessControlGuard plans={['PREMIUM']}> */}
+            <NBPlanAccessControlGuard plans={['PREMIUM']}>
               <Analytics />
             </NBPlanAccessControlGuard>
           </NBAuthGuard>
