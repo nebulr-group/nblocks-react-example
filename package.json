@@ -7,7 +7,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@nebulr-group/nblocks-react": "^0.1.8-beta.1",
+    "@nebulr-group/nblocks-react": "^0.1.8-beta.2",
     "chart.js": "^3.8.0",
     "chartjs-adapter-moment": "^1.0.0",
     "moment": "^2.29.4",
