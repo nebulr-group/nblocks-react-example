@@ -18,12 +18,15 @@ function App() {
 
   return (
     <NblocksProvider config={{signup: true, passwordValidation: false}}>
-      <div className="flex h-screen overflow-hidden justify-center">
+      <div className="w-full flex h-screen">
         {['/dashboard', '/analytics'].includes(location.pathname) && (
           <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
         )}
-        <AppRoutes />
+        <div className='overflow-scroll w-full flex justify-center'>
+          <AppRoutes />
+        </div>
       </div>
+      
     </NblocksProvider>
   );
 }
