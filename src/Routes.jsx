@@ -5,13 +5,13 @@ import Dashboard from "./pages/Dashboard";
 import Analytics from "./pages/Analytics";
 
 import {
-  AuthGuard,
+  NBAuthGuard,
   AuthRoutes,
   OnboardRoutes,
   SetupRoutes,
   UserRoutes,
   TenantRoutes,
-  PlanAccessGuard,
+  NBPlanAccessControlGuard,
 } from "@nebulr-group/nblocks-react";
 
 function AppRoutes() {
@@ -21,9 +21,9 @@ function AppRoutes() {
         exact
         path="/dashboard"
         element={
-          <AuthGuard>
+          <NBAuthGuard>
             <Dashboard />
-          </AuthGuard>
+          </NBAuthGuard>
         }
       />
 
@@ -31,11 +31,11 @@ function AppRoutes() {
         exact
         path="/analytics"
         element={
-          <AuthGuard>
-            {/* <PlanAccessGuard plans={['PREMIUM']}> */}
-            <Analytics />
-            {/* </PlanAccessGuard> */}
-          </AuthGuard>
+          <NBAuthGuard>
+            <NBPlanAccessControlGuard plans={['PREMIUM']}> */}
+              <Analytics />
+            </NBPlanAccessControlGuard>
+          </NBAuthGuard>
         }
       />
 
@@ -47,9 +47,9 @@ function AppRoutes() {
       <Route
         path="/user/*"
         element={
-          <AuthGuard>
+          <NBAuthGuard>
             <UserRoutes />
-          </AuthGuard>
+          </NBAuthGuard>
         }
       />
       <Route path="*" element={<Navigate to="/dashboard" replace />} />

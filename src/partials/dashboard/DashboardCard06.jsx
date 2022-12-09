@@ -1,4 +1,4 @@
-import { useApp, useSecureContext } from '@nebulr-group/nblocks-react';
+import { useSecureContext } from '@nebulr-group/nblocks-react';
 import React, { useEffect, useState } from 'react';
 import DoughnutChart from '../../charts/DoughnutChart';
 

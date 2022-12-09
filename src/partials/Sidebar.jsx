@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { NavLink, Link, useLocation } from "react-router-dom";
 import {
-  PlanAccessControllComponent,
+  NBPlanAccessControlComponent,
   useApp,
 } from "@nebulr-group/nblocks-react";
 
@@ -92,9 +92,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
               <DashboardButton />
 
               {/* The clickable analytics button (Only for premium users) */}
-              <PlanAccessControllComponent plans={['PREMIUM']}>
+              <NBPlanAccessControlComponent plans={['PREMIUM']}>
                 <AnalyticsButton />
-              </PlanAccessControllComponent>
+              </NBPlanAccessControlComponent>
             </ul>
           </div>
         </div>
