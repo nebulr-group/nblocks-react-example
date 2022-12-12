@@ -11,7 +11,7 @@ import {
   SetupRoutes,
   UserRoutes,
   TenantRoutes,
-  NBPlanAccessControlGuard,
+  NBAccessControlGuard,
 } from "@nebulr-group/nblocks-react";
 
 function AppRoutes() {
@@ -31,11 +31,9 @@ function AppRoutes() {
         exact
         path="/analytics"
         element={
-          <NBAuthGuard>
-            <NBPlanAccessControlGuard plans={['PREMIUM']}>
-              <Analytics />
-            </NBPlanAccessControlGuard>
-          </NBAuthGuard>
+          <NBAccessControlGuard plans={['PREMIUM']}>
+            <Analytics />
+          </NBAccessControlGuard>
         }
       />
 

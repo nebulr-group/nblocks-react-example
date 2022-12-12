@@ -3,7 +3,7 @@ import {
   useLocation
 } from 'react-router-dom';
 import Sidebar from './partials/Sidebar';
-
+import "./App.css";
 import './charts/ChartjsConfig';
 
 // Import pages
@@ -22,7 +22,7 @@ function App() {
         {['/dashboard', '/analytics'].includes(location.pathname) && (
           <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
         )}
-        <div className='overflow-scroll w-full flex justify-center'>
+        <div className="overflow-y-auto w-full flex justify-center nblocks-router">
           <AppRoutes />
         </div>
       </div>
