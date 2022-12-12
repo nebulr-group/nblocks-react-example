@@ -31,9 +31,10 @@ function AppRoutes() {
         exact
         path="/analytics"
         element={
-          <NBAccessControlGuard plans={['PREMIUM']}>
+          // Uncomment NBAccessControlGuard to restrict the route /analytics
+          // <NBAccessControlGuard plans={['PREMIUM']}>
             <Analytics />
-          </NBAccessControlGuard>
+          // </NBAccessControlGuard>
         }
       />
 

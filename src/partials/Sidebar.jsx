@@ -91,10 +91,10 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
               {/* The clickable dashboard button */}
               <DashboardButton />
 
-              {/* The clickable analytics button (Only for premium users) */}
-              <NBAccessControlComponent plans={['PREMIUM']}>
+              {/* Uncomment NBAccessControlComponent to restrict the button */}
+              {/* <NBAccessControlComponent plans={['PREMIUM']}> */}
                 <AnalyticsButton />
-              </NBAccessControlComponent>
+              {/* </NBAccessControlComponent> */}
             </ul>
           </div>
         </div>
