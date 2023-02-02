@@ -17,16 +17,15 @@ function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <NblocksProvider config={{signup: true, passwordValidation: false}}>
+    <NblocksProvider config={{devMode: true, spa: false}}>
       <div className="w-full flex h-screen">
-        {['/dashboard', '/analytics'].includes(location.pathname) && (
+        {['/dashboard', '/analytics', '/user/list'].includes(location.pathname) && (
           <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
         )}
         <div className="overflow-y-auto w-full flex justify-center nblocks-router">
           <AppRoutes />
         </div>
       </div>
-      
     </NblocksProvider>
   );
 }
