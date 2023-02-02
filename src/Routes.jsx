@@ -13,10 +13,25 @@ import {
   TenantRoutes,
   NBAccessControlGuard,
 } from "@nebulr-group/nblocks-react";
+import { Todos } from "./pages/Todos";
 
 function AppRoutes() {
   return (
     <Routes>
+      <Route
+        exact
+        path="/todos"
+        element={
+          <Todos />
+        }
+      />
+      <Route
+        exact
+        path="/callback"
+        element={
+          <h1>Callback</h1>
+        }
+      />
       <Route
         exact
         path="/dashboard"

@@ -1,0 +1,28 @@
+.todos {
+  padding: 20px;
+}
+
+.todo {
+  background-color: white;
+  padding: 10px;
+  border-bottom: solid 1px lightgray;
+  width: 300px;
+}
+
+.todo.checked {
+  background-color: blue;
+}
+
+.new-todo {
+  margin-top: 50px;
+}
+
+.new-todo textarea {
+  padding: 10px;
+  height: 60px;
+}
+
+.new-todo button {
+  background-color: lightgray;
+  padding: 5px;
+}
