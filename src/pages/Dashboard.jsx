@@ -3,7 +3,7 @@ import WelcomeBanner from "../partials/dashboard/WelcomeBanner";
 import ExampleHeading from "../components/ExampleHeading";
 import UserListButton from "../components/UserListButton";
 import NotificationForm from "../components/NotificationForm";
-// import '../css/style.css';
+import { NBAccessControlComponent } from "@nebulr-group/nblocks-react";
 
 function Dashboard() {
   return (
@@ -12,9 +12,20 @@ function Dashboard() {
         <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
           {/* Welcome banner */}
           <WelcomeBanner />
-          <ExampleHeading className={"text-2xl"} />
-          <UserListButton>List Tenant Users</UserListButton>
-          <NotificationForm />
+          <NBAccessControlComponent plans={["PREMIUM"]}>
+            <ExampleHeading className={"text-2xl"} />
+          </NBAccessControlComponent>
+
+          <NBAccessControlComponent roles={["OWNER"]}>
+            <UserListButton>List Tenant Users</UserListButton>
+          </NBAccessControlComponent>
+
+          <NBAccessControlComponent
+            roles={["TENANT_ADMIN", "OWNER"]}
+            plans={["PREMIUM"]}
+          >
+            <NotificationForm />
+          </NBAccessControlComponent>
         </div>
       </main>
     </div>
