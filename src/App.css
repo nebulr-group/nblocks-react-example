@@ -1,3 +1,8 @@
 .nblocks-router > div {
-    width: 100%;
-  }
+  width: 100%;
+}
+
+.notificationform__submit-button {
+  --tw-bg-opacity: 1;
+  background-color: rgb(129 140 248 / var(--tw-bg-opacity));
+}
