@@ -32,9 +32,12 @@ function AppRoutes() {
         path="/analytics"
         element={
           // Uncomment NBAccessControlGuard to restrict the route /analytics
-          // <NBAccessControlGuard plans={['PREMIUM']}>
+          <NBAccessControlGuard
+            plans={["PREMIUM"]}
+            roles={["OWNER", "TENANT_ADMIN"]}
+          >
             <Analytics />
-          // </NBAccessControlGuard>
+          </NBAccessControlGuard>
         }
       />
 
