@@ -1,0 +1,4 @@
+const APPLICATION_ID = "ADD YOUR APPID HERE";
+
+
+export {APPLICATION_ID}
