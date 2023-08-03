@@ -2,7 +2,7 @@
 
 # Supports ARM + x86-64
 # 'as base' allows us to refer to this build stage in other build stages
-FROM node:16-buster
+FROM node:20-buster
 SHELL ["/bin/bash", "-c"]
 
 # Set the root working dir inside container

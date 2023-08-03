@@ -1,15 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { NavLink, Link, useLocation } from "react-router-dom";
-import {
-  NBAccessControlComponent,
-  useApp,
-} from "@nebulr-group/nblocks-react";
 
 import SidebarLinkGroup from "./SidebarLinkGroup";
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
-  const location = useLocation();
-  const app = useApp();
+  const location = useLocation();  
 
   const trigger = useRef(null);
   const sidebar = useRef(null);
@@ -69,7 +64,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
           </button>
           {/* Logo */}
           <NavLink end to="/" className="block">
-            <img src={app.logo} />
+            Logo
           </NavLink>
         </div>
 
@@ -90,12 +85,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
             </h3>
             <ul className="mt-3">
               {/* The clickable dashboard button */}
-              <DashboardButton active={location.pathname === "/" || location.pathname.includes("dashboard")} />
-
-              {/* Uncomment NBAccessControlComponent to restrict the button */}
-              {/* <NBAccessControlComponent plans={['PREMIUM']}> */}
-                <AnalyticsButton active={location.pathname.includes("analytics")} />
-              {/* </NBAccessControlComponent> */}
+              <DashboardButton active={location.pathname === "/" || location.pathname.includes("dashboard")} />            
+              <AnalyticsButton active={location.pathname.includes("analytics")} />            
               <UserListButton active={location.pathname.includes("user/list")} />
             </ul>
           </div>

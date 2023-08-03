@@ -1,4 +1,3 @@
-import { useSecureContext } from '@nebulr-group/nblocks-react';
 import React, { useEffect, useState } from 'react';
 import DoughnutChart from '../../charts/DoughnutChart';
 
@@ -7,17 +6,18 @@ import { tailwindConfig } from '../../utils/Utils';
 
 function DashboardCard06() {
 
-  const {authHttpClient} = useSecureContext();
-
   const [data, setData] = useState([]);
 
   useEffect(() => {
     const getData = async () => {
-      const result = await authHttpClient.httpClient.get("/analytics/data");
-      setData(result.data);
+      const result = await fetch("http://localhost:3000/getData", {
+        
+      }).then(result => result.json());
+      setData(result);
     }
     getData();
   }, []);
+
 
   const chartData = {
     labels: ['United States', 'Italy', 'Other'],

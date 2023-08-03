@@ -1,18 +1,8 @@
 import React from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 
-import Dashboard from "./pages/Dashboard";
 import Analytics from "./pages/Analytics";
-
-import {
-  NBAuthGuard,
-  AuthRoutes,
-  OnboardRoutes,
-  SetupRoutes,
-  UserRoutes,
-  TenantRoutes,
-  NBAccessControlGuard,
-} from "@nebulr-group/nblocks-react";
+import Dashboard from "./pages/Dashboard";
 
 function AppRoutes() {
   return (
@@ -20,10 +10,8 @@ function AppRoutes() {
       <Route
         exact
         path="/dashboard"
-        element={
-          <NBAuthGuard>
-            <Dashboard />
-          </NBAuthGuard>
+        element={          
+            <Dashboard />          
         }
       />
 
@@ -31,26 +19,10 @@ function AppRoutes() {
         exact
         path="/analytics"
         element={
-          // Uncomment NBAccessControlGuard to restrict the route /analytics
-          // <NBAccessControlGuard plans={['PREMIUM']}>
             <Analytics />
-          // </NBAccessControlGuard>
         }
       />
-
-      {/* Nblocks standard routes */}
-      <Route path="/auth/*" element={<AuthRoutes />} />
-      <Route path="/onboard/*" element={<OnboardRoutes />} />
-      <Route path="/setup/*" element={<SetupRoutes />} />
-      <Route path="/tenant/*" element={<TenantRoutes />} />
-      <Route
-        path="/user/*"
-        element={
-          <NBAuthGuard>
-            <UserRoutes />
-          </NBAuthGuard>
-        }
-      />
+            
       <Route path="*" element={<Navigate to="/dashboard" replace />} />
     </Routes>
   );
