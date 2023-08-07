@@ -11,13 +11,14 @@ function DashboardCard06() {
   useEffect(() => {
     const getData = async () => {
       const result = await fetch("http://localhost:3000/getData", {
-        
+        headers: {
+          "Authorization": `Bearer ${window.localStorage.getItem("access_token")}`
+        }
       }).then(result => result.json());
       setData(result);
     }
     getData();
   }, []);
-
 
   const chartData = {
     labels: ['United States', 'Italy', 'Other'],
