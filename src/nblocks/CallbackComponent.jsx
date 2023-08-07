@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import {APPLICATION_ID } from "./Globals"; 
 
 // Users will get back to this component after finishing login
@@ -38,7 +38,7 @@ export default function CallbackComponent() {
   };
 
   if (tokens)
-    return (<p>Hello {tokens.user_profile.name}</p>);
+    return (<Navigate to={"/"}/>);
   else
     return (<p>Not logged in</p>);
 }
