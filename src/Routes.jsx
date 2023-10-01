@@ -6,6 +6,7 @@ import Dashboard from "./pages/Dashboard";
 import LoginComponent from "./nblocks/LoginComponent";
 import CallbackComponent from "./nblocks/CallbackComponent";
 import ProtectedRoute from "./nblocks/ProtectedRoute";
+import { UserList } from "./pages/UserList";
 
 
 function AppRoutes() {
@@ -33,6 +34,7 @@ function AppRoutes() {
               <Routes>
                  <Route exact path="/dashboard" element={<Dashboard />}/>
                 <Route exact path="/analytics" element={<Analytics />}/>
+                <Route exact path="/user/list" element={<UserList />}/>
                 <Route path="*" element={<Navigate to="/dashboard" replace={true} />}/>
               </Routes>
             </ProtectedRoute>
