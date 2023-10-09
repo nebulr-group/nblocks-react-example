@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Navigate, useLocation } from 'react-router-dom';
-import {APPLICATION_ID } from "./Globals"; 
+import {APPLICATION_ID, NBLOCKS_AUTH } from "./Globals"; 
 
 // Users will get back to this component after finishing login
 export default function CallbackComponent() {
@@ -20,7 +20,7 @@ export default function CallbackComponent() {
 
   const handleCallback = async (code) => {
     // Make the API call to Nblocks
-    const result = await fetch(`https://auth-stage.nblocks.cloud/token/code/${APP_ID}`,
+    const result = await fetch(`${NBLOCKS_AUTH}/token/code/${APP_ID}`,
       {
         method: "POST",
         headers: {

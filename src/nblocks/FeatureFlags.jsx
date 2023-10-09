@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { APPLICATION_ID } from './Globals';
+import { APPLICATION_ID, NBLOCKS_BACKENDLESS } from './Globals';
 // The component takes the prop flag.
 export default function FeatureFlag({ flag, children }) {
 
@@ -20,7 +20,7 @@ export default function FeatureFlag({ flag, children }) {
 
   const evaluate = async (accessToken) => {
     const result = await fetch(
-      `https://backendless-stage.nblocks.cloud/flags/evaluate/${APP_ID}/${flag}`,
+      `${NBLOCKS_BACKENDLESS}/flags/evaluate/${APP_ID}/${flag}`,
       {
         method: 'POST',
         headers: {

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { APPLICATION_ID } from "../nblocks/Globals";
+import { APPLICATION_ID, NBLOCKS_AUTH, NBLOCKS_BACKENDLESS } from "../nblocks/Globals";
 
 // Users will get back to this component after finishing login
 function UserList() {
@@ -7,7 +7,7 @@ function UserList() {
 
   const getHandoverCode = async (accessToken) => {
     // Make the API call to Nblocks
-    const handoverCodeResult = await fetch(`https://auth-stage.nblocks.cloud/handover/code/${APPLICATION_ID}`,
+    const handoverCodeResult = await fetch(`${NBLOCKS_AUTH}/handover/code/${APPLICATION_ID}`,
       {
         method: "POST",
         headers: {
@@ -28,7 +28,7 @@ function UserList() {
     }
   }, [handoverCode]);
 
-  const iframeSrc = `https://backendless-stage.nblocks.cloud/user-management-portal/users?code=${handoverCode}`;
+  const iframeSrc = `${NBLOCKS_BACKENDLESS}/user-management-portal/users?code=${handoverCode}`;
 
   return handoverCode ? (
     <iframe 
