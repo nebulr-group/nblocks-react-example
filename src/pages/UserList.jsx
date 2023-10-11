@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import { APPLICATION_ID, NBLOCKS_AUTH, NBLOCKS_BACKENDLESS } from "../nblocks/Globals";
 
-// Users will get back to this component after finishing login
 function UserList() {
   const [handoverCode, setHandoverCode] = useState();
 
+  // Replace this with your own APP ID
+  const APP_ID = APPLICATION_ID;
+
   const getHandoverCode = async (accessToken) => {
     // Make the API call to Nblocks
-    const handoverCodeResult = await fetch(`${NBLOCKS_AUTH}/handover/code/${APPLICATION_ID}`,
+    const handoverCodeResult = await fetch(`${NBLOCKS_AUTH}/handover/code/${APP_ID}`,
       {
         method: "POST",
         headers: {

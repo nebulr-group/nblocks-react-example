@@ -3,7 +3,7 @@ import { APPLICATION_ID, NBLOCKS_BACKENDLESS } from './Globals';
 // The component takes the prop flag.
 export default function FeatureFlag({ flag, children }) {
 
-    // Replace this with your own APP ID
+  // Replace this with your own APP ID
   const APP_ID = APPLICATION_ID;
 
   // This will be our variable telling if the feature is enabled or and we should render the component children

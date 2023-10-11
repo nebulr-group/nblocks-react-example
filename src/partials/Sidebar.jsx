@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { NavLink, Link, useLocation } from "react-router-dom";
-
+import { decodeJwt } from 'jose';
 import SidebarLinkGroup from "./SidebarLinkGroup";
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
@@ -8,6 +8,20 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
 
   const trigger = useRef(null);
   const sidebar = useRef(null);
+
+  const [name, setName] = useState("");
+  const [plan, setPlan] = useState("");
+
+  useEffect(() => {
+    const idToken = window.localStorage.getItem('id_token');
+    if (idToken) {
+      setName(decodeJwt(idToken).name);
+    }
+    const accessToken = window.localStorage.getItem('access_token');
+    if (accessToken) {
+      setPlan(decodeJwt(accessToken).plan);
+    }
+  })
 
   const storedSidebarExpanded = localStorage.getItem("sidebar-expanded");
   const [sidebarExpanded, setSidebarExpanded] = useState(
@@ -88,6 +102,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
               <DashboardButton active={location.pathname === "/" || location.pathname.includes("dashboard")} />            
               <AnalyticsButton active={location.pathname.includes("analytics")} />            
               <UserListButton active={location.pathname.includes("user/list")} />
+              <SubscriptionButton />
             </ul>
           </div>
         </div>
@@ -95,6 +110,14 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
         <div className="justify-end mt-auto">
           <div>
             <ul className="mt-3">
+              <div className="px-3">
+                <div>
+                  {name}
+                </div>
+                <div>
+                  Plan: {plan}
+                </div>
+              </div>
               <SidebarLinkGroup>
                 <Link
                   to="/auth/logout"
@@ -255,6 +278,35 @@ const UserListButton = ({active}) => {
             </svg>
             <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
               Users
+            </span>
+          </div>
+        </div>
+      </Link>
+    </SidebarLinkGroup>
+  );
+};
+
+const SubscriptionButton = () => {
+  return (
+    <SidebarLinkGroup activecondition={false}>
+      <Link
+        to="/selectPlan"
+        className={`block text-slate-200 hover:text-white truncate transition duration-150`}
+      >
+        <div className="flex items-center justify-between">
+          <div className="flex items-center">
+          <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
+              <path
+                className={`fill-current text-slate-600`}
+                d="M18.974 8H22a2 2 0 012 2v6h-2v5a1 1 0 01-1 1h-2a1 1 0 01-1-1v-5h-2v-6a2 2 0 012-2h.974zM20 7a2 2 0 11-.001-3.999A2 2 0 0120 7zM2.974 8H6a2 2 0 012 2v6H6v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5H0v-6a2 2 0 012-2h.974zM4 7a2 2 0 11-.001-3.999A2 2 0 014 7z"
+              />
+              <path
+                className={`fill-current text-slate-400`}
+                d="M12 6a3 3 0 110-6 3 3 0 010 6zm2 18h-4a1 1 0 01-1-1v-6H6v-6a3 3 0 013-3h6a3 3 0 013 3v6h-3v6a1 1 0 01-1 1z"
+              />
+            </svg>
+            <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+              Subscription
             </span>
           </div>
         </div>

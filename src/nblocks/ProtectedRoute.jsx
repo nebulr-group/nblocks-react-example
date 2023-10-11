@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { decodeJwt } from "jose";
 import { Navigate } from 'react-router-dom';
 
