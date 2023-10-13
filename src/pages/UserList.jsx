@@ -20,7 +20,10 @@ function UserList() {
         }),
       }
     ).then(res => res.json());
-    setHandoverCode(handoverCodeResult.code);
+    
+    if(handoverCodeResult.code) {
+      setHandoverCode(handoverCodeResult.code);
+    }
   };
 
   useEffect(() => {
@@ -42,7 +45,7 @@ function UserList() {
       }}
     >
     </iframe>
-  ) : <div></div>;
+  ) : <div>Loading...</div>;
 
 }
 

@@ -11,6 +11,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
 
   const [name, setName] = useState("");
   const [plan, setPlan] = useState("");
+  const [trial, setTrial] = useState(false);
 
   useEffect(() => {
     const idToken = window.localStorage.getItem('id_token');
@@ -19,7 +20,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
     }
     const accessToken = window.localStorage.getItem('access_token');
     if (accessToken) {
-      setPlan(decodeJwt(accessToken).plan);
+      const {plan, trial} = decodeJwt(accessToken);
+      setPlan(plan);
+      setTrial(trial);
     }
   })
 
@@ -78,7 +81,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
           </button>
           {/* Logo */}
           <NavLink end to="/" className="block">
-            Logo
+            <img src="https://public.nblocks.dev/assets/logos/nblocks-logo-black.svg"></img>
           </NavLink>
         </div>
 
@@ -115,7 +118,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                   {name}
                 </div>
                 <div>
-                  Plan: {plan}
+                  Plan: {plan} {trial ? "(trial)" : ""}
                 </div>
               </div>
               <SidebarLinkGroup>

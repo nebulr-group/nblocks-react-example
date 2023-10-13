@@ -20,8 +20,10 @@ function SelectPlan() {
       }
     ).then(res => res.json());
     
-    // Redirect to Nblocks Payments
-    window.location.replace(`${NBLOCKS_BACKENDLESS}/subscription-portal/selectPlan?code=${handoverCodeResult.code}`);
+    if(handoverCodeResult.code) {
+      // Redirect to Nblocks Payments
+      window.location.replace(`${NBLOCKS_BACKENDLESS}/subscription-portal/selectPlan?code=${handoverCodeResult.code}`); 
+    }
   };
 
   useEffect(() => {
@@ -30,6 +32,8 @@ function SelectPlan() {
       redirectToSelectPlan(accessToken);
     }
   }, [])
+
+  return <div>Loading...</div>
 }
 
 export { SelectPlan }
