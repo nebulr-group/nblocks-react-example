@@ -40,8 +40,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
     }
   }, [sidebarExpanded]);
 
-  console.log("Construct");
-
   return (
     <div>
       {/* Sidebar backdrop (mobile only) */}
