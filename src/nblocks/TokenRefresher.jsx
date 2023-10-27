@@ -35,10 +35,10 @@ export default function TokenRefresher() {
       window.localStorage.setItem('refresh_token', refresh_token);
       window.localStorage.setItem('id_token', id_token);
 
-      console.log(`Tokens refreshed, scheduling new refresh in ${tokens.expires_in * 1000} s`);
+      console.log(`Tokens refreshed, scheduling new refresh in ${tokens.expires_in} s`);
       setTimeout(refreshTokens, tokens.expires_in * 1000);
     } else {
-      console.log(`No refresh token found, trying again in ${60 * 1000} s`);
+      console.log(`Trying another refresh in ${60} s`);
       setTimeout(refreshTokens, 60 * 1000);
     }
   }

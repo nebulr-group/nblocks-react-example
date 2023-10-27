@@ -48,6 +48,8 @@ export default function CallbackComponent() {
     window.localStorage.setItem('access_token', access_token);
     window.localStorage.setItem('refresh_token', refresh_token);
     window.localStorage.setItem('id_token', id_token);
+
+    console.log("Successfully exchanged code for tokens");
   };
 
   if (accessToken)
