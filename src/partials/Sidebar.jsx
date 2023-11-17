@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { NavLink, Link, useLocation } from "react-router-dom";
 import { decodeJwt } from 'jose';
 import SidebarLinkGroup from "./SidebarLinkGroup";
+import FeatureFlag from "../nblocks/FeatureFlags";
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
   const location = useLocation();  
@@ -118,6 +119,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                 <div>
                   Plan: {plan} {trial ? "(trial)" : ""}
                 </div>
+                <FeatureFlag flag={"my-flag"}>
+                  <span>Feature on</span>
+                </FeatureFlag>
               </div>
               <SidebarLinkGroup>
                 <Link
