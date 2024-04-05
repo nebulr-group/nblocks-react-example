@@ -1,14 +1,11 @@
 import React, { useEffect } from "react";
-import { APPLICATION_ID, NBLOCKS_AUTH, NBLOCKS_BACKENDLESS } from "../nblocks/Globals";
+import { APP_ID, NBLOCKS_AUTH_URL, NBLOCKS_BACKENDLESS_URL } from "../nblocks/Globals";
 
 function SelectPlan() {
   const redirectToSelectPlan = async (accessToken) => {
 
-    // Replace this with your own APP ID
-    const APP_ID = APPLICATION_ID;
-
     // Make the API call to Nblocks
-    const handoverCodeResult = await fetch(`${NBLOCKS_AUTH}/handover/code/${APP_ID}`,
+    const handoverCodeResult = await fetch(`${NBLOCKS_AUTH_URL}/handover/code/${APP_ID}`,
       {
         method: "POST",
         headers: {
@@ -22,7 +19,7 @@ function SelectPlan() {
     
     if(handoverCodeResult.code) {
       // Redirect to Nblocks Payments
-      window.location.replace(`${NBLOCKS_BACKENDLESS}/subscription-portal/selectPlan?code=${handoverCodeResult.code}`); 
+      window.location.replace(`${NBLOCKS_BACKENDLESS_URL}/subscription-portal/selectPlan?code=${handoverCodeResult.code}`); 
     }
   };
 

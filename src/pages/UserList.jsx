@@ -1,15 +1,12 @@
 import { useEffect, useState } from "react";
-import { APPLICATION_ID, NBLOCKS_AUTH, NBLOCKS_BACKENDLESS } from "../nblocks/Globals";
+import { APP_ID, NBLOCKS_AUTH_URL, NBLOCKS_BACKENDLESS_URL } from "../nblocks/Globals";
 
 function UserList() {
   const [handoverCode, setHandoverCode] = useState();
 
-  // Replace this with your own APP ID
-  const APP_ID = APPLICATION_ID;
-
   const getHandoverCode = async (accessToken) => {
     // Make the API call to Nblocks
-    const handoverCodeResult = await fetch(`${NBLOCKS_AUTH}/handover/code/${APP_ID}`,
+    const handoverCodeResult = await fetch(`${NBLOCKS_AUTH_URL}/handover/code/${APP_ID}`,
       {
         method: "POST",
         headers: {
@@ -33,7 +30,7 @@ function UserList() {
     }
   }, [handoverCode]);
 
-  const iframeSrc = `${NBLOCKS_BACKENDLESS}/user-management-portal/users?code=${handoverCode}`;
+  const iframeSrc = `${NBLOCKS_BACKENDLESS_URL}/user-management-portal/users?code=${handoverCode}`;
 
   return handoverCode ? (
     <iframe 

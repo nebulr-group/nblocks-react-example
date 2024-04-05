@@ -1,16 +1,14 @@
 import React, { useEffect } from "react";
-import {APPLICATION_ID, NBLOCKS_AUTH } from "./Globals"; 
+import {APP_ID, NBLOCKS_AUTH_URL } from "./Globals"; 
 import { jwtVerify, decodeJwt, createRemoteJWKSet } from "jose";
 
 export default function TokenRefresher() {
-
-  const APP_ID = APPLICATION_ID;
 
   const refreshTokens = async () => {
     const refreshToken = window.localStorage.getItem('refresh_token');
     if (refreshToken) {
       console.log("Refreshing tokens");
-      const tokens = await fetch(`${NBLOCKS_AUTH}/token/refresh/${APP_ID}`,
+      const tokens = await fetch(`${NBLOCKS_AUTH_URL}/token/refresh/${APP_ID}`,
         {
           method: "POST",
           headers: {
@@ -26,8 +24,8 @@ export default function TokenRefresher() {
       const { access_token, refresh_token, id_token } = tokens;
       await jwtVerify(
         access_token, createRemoteJWKSet(
-            new URL(`${NBLOCKS_AUTH}/.well-known/jwks.json`)
-        ), { issuer: NBLOCKS_AUTH }
+            new URL(`${NBLOCKS_AUTH_URL}/.well-known/jwks.json`)
+        ), { issuer: NBLOCKS_AUTH_URL }
       );
   
       // Store the result in component state and localstorage
