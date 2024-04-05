@@ -80,7 +80,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
           </button>
           {/* Logo */}
           <NavLink end to="/" className="block">
-            <img src="https://public.nblocks.dev/assets/logos/nblocks-logo-black.svg"></img>
+            <img src="https://public.nblocks.dev/assets/logos/nblocks-logo-black-text.png"></img>
           </NavLink>
         </div>
 
