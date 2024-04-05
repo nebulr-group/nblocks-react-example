@@ -5,7 +5,6 @@ import {
 import Sidebar from './partials/Sidebar';
 import "./App.css";
 import './charts/ChartjsConfig';
-import TokenRefresher from './nblocks/TokenRefresher';
 
 // Import pages
 import AppRoutes from './Routes';
@@ -17,7 +16,6 @@ function App() {
 
   return (
       <div className="w-full flex h-screen">
-        <TokenRefresher/>
         {['/dashboard', '/analytics', '/user/list'].includes(location.pathname) && (
           <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
         )}

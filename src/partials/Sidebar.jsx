@@ -1,31 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import { NavLink, Link, useLocation } from "react-router-dom";
-import { decodeJwt } from 'jose';
 import SidebarLinkGroup from "./SidebarLinkGroup";
-import FeatureFlag from "../nblocks/FeatureFlags";
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
   const location = useLocation();  
 
   const trigger = useRef(null);
   const sidebar = useRef(null);
-
-  const [name, setName] = useState("");
-  const [plan, setPlan] = useState("");
-  const [trial, setTrial] = useState(false);
-
-  useEffect(() => {
-    const idToken = window.localStorage.getItem('id_token');
-    if (idToken) {
-      setName(decodeJwt(idToken).name);
-    }
-    const accessToken = window.localStorage.getItem('access_token');
-    if (accessToken) {
-      const {plan, trial} = decodeJwt(accessToken);
-      setPlan(plan);
-      setTrial(trial);
-    }
-  })
 
   const storedSidebarExpanded = localStorage.getItem("sidebar-expanded");
   const [sidebarExpanded, setSidebarExpanded] = useState(
@@ -103,8 +84,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
               {/* The clickable dashboard button */}
               <DashboardButton active={location.pathname === "/" || location.pathname.includes("dashboard")} />            
               <AnalyticsButton active={location.pathname.includes("analytics")} />            
-              <UserListButton active={location.pathname.includes("user/list")} />
-              <SubscriptionButton active={false}/>
             </ul>
           </div>
         </div>
@@ -112,31 +91,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
         <div className="justify-end mt-auto">
           <div>
             <ul className="mt-3">
-              <div className="px-3">
-                <div>
-                  {name}
-                </div>
-                <div>
-                  Plan: {plan} {trial ? "(trial)" : ""}
-                </div>
-                <FeatureFlag flag={"my-flag"}>
-                  <span>Feature on</span>
-                </FeatureFlag>
-              </div>
-              <SidebarLinkGroup>
-                <Link
-                  to="/auth/logout"
-                  className={`block text-slate-200 hover:text-white truncate transition duration-150`}
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center">
-                      <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                        Logout
-                      </span>
-                    </div>
-                  </div>
-                </Link>
-              </SidebarLinkGroup>
             </ul>
           </div>
         </div>
@@ -252,66 +206,6 @@ const AnalyticsButton = ({active}) => {
             </svg>
             <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
               Analytics
-            </span>
-          </div>
-        </div>
-      </Link>
-    </SidebarLinkGroup>
-  );
-};
-
-const UserListButton = ({active}) => {
-  return (
-    <SidebarLinkGroup activecondition={active}>
-      <Link
-        to="/user/list"
-        className={`block text-slate-200 hover:text-white truncate transition duration-150 ${
-          active && "hover:text-slate-200"
-        }`}
-      >
-        <div className="flex items-center justify-between">
-          <div className="flex items-center">
-          <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
-              <path
-                className={`fill-current text-slate-600 ${active && 'text-indigo-500'}`}
-                d="M18.974 8H22a2 2 0 012 2v6h-2v5a1 1 0 01-1 1h-2a1 1 0 01-1-1v-5h-2v-6a2 2 0 012-2h.974zM20 7a2 2 0 11-.001-3.999A2 2 0 0120 7zM2.974 8H6a2 2 0 012 2v6H6v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5H0v-6a2 2 0 012-2h.974zM4 7a2 2 0 11-.001-3.999A2 2 0 014 7z"
-              />
-              <path
-                className={`fill-current text-slate-400 ${active && 'text-indigo-300'}`}
-                d="M12 6a3 3 0 110-6 3 3 0 010 6zm2 18h-4a1 1 0 01-1-1v-6H6v-6a3 3 0 013-3h6a3 3 0 013 3v6h-3v6a1 1 0 01-1 1z"
-              />
-            </svg>
-            <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-              Users
-            </span>
-          </div>
-        </div>
-      </Link>
-    </SidebarLinkGroup>
-  );
-};
-
-const SubscriptionButton = ({active}) => {
-  return (
-    <SidebarLinkGroup activecondition={false}>
-      <Link
-        to="/selectPlan"
-        className={`block text-slate-200 hover:text-white truncate transition duration-150`}
-      >
-        <div className="flex items-center justify-between">
-          <div className="flex items-center">
-            <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
-              <path
-                className={`fill-current text-slate-600 ${active && 'text-indigo-500'}`}
-                d="M20 7a.75.75 0 01-.75-.75 1.5 1.5 0 00-1.5-1.5.75.75 0 110-1.5 1.5 1.5 0 001.5-1.5.75.75 0 111.5 0 1.5 1.5 0 001.5 1.5.75.75 0 110 1.5 1.5 1.5 0 00-1.5 1.5A.75.75 0 0120 7zM4 23a.75.75 0 01-.75-.75 1.5 1.5 0 00-1.5-1.5.75.75 0 110-1.5 1.5 1.5 0 001.5-1.5.75.75 0 111.5 0 1.5 1.5 0 001.5 1.5.75.75 0 110 1.5 1.5 1.5 0 00-1.5 1.5A.75.75 0 014 23z"
-              />
-              <path
-                className={`fill-current text-slate-400 ${active && 'text-indigo-300'}`}
-                d="M17 23a1 1 0 01-1-1 4 4 0 00-4-4 1 1 0 010-2 4 4 0 004-4 1 1 0 012 0 4 4 0 004 4 1 1 0 010 2 4 4 0 00-4 4 1 1 0 01-1 1zM7 13a1 1 0 01-1-1 4 4 0 00-4-4 1 1 0 110-2 4 4 0 004-4 1 1 0 112 0 4 4 0 004 4 1 1 0 010 2 4 4 0 00-4 4 1 1 0 01-1 1z"
-              />
-            </svg>
-            <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-              Subscription
             </span>
           </div>
         </div>
