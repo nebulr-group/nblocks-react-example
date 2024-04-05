@@ -21,7 +21,6 @@ function BarChart01({
 
   useEffect(() => {
     const ctx = canvas.current;
-    // eslint-disable-next-line no-unused-vars
     const chart = new Chart(ctx, {
       type: 'bar',
       data: data,
@@ -144,7 +143,6 @@ function BarChart01({
       }],
     });
     return () => chart.destroy();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

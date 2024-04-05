@@ -20,7 +20,6 @@ function LineChart01({
 
   useEffect(() => {
     const ctx = canvas.current;
-    // eslint-disable-next-line no-unused-vars
     const chart = new Chart(ctx, {
       type: 'line',
       data: data,
@@ -65,7 +64,6 @@ function LineChart01({
       },
     });
     return () => chart.destroy();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

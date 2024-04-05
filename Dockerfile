@@ -12,8 +12,6 @@ WORKDIR "/app"
 # Set layer caching for faster builds
 # Runs only on package.json and package-lock.js change
 COPY ["package.json", "./"]
-
-
 # Installing prod and dev dependencies
 RUN npm install
 # Copy rest of the projects source code to container env

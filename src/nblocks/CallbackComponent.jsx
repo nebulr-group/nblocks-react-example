@@ -47,6 +47,6 @@ export default function CallbackComponent() {
   if (accessToken)
       return (<Navigate to={"/"}/>);
   else
-    return (<p>Not logged in</p>);
+    return (<p>Loading...</p>);
 }
 

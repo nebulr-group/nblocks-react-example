@@ -11,7 +11,7 @@ export default function LoginComponent() {
     window.location.replace(`${NBLOCKS_AUTH}/url/login/${APP_ID}`);
   })
 
-  return ("");
+  return ("Logging in...");
 }
 
 

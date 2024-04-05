@@ -60,7 +60,6 @@ function DashboardCard05() {
     }
     setSlicedLabels(([x, ...slicedLabels]) => [...slicedLabels, new Date()]);
     return () => setIncrement(0)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [counter]);
 
   const chartData = {
