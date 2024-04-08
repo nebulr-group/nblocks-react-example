@@ -16,9 +16,7 @@ function App() {
 
   return (
       <div className="w-full flex h-screen">
-        {['/dashboard', '/analytics', '/user/list'].includes(location.pathname) && (
-          <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-        )}
+        <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
         <div className="overflow-y-auto w-full flex justify-center nblocks-router">
           <AppRoutes />
         </div>
