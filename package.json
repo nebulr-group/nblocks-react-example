@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "scripts": {
     "dev": "PORT=8080 react-scripts start",
-    "build": "react-scripts build",
-    "preview": "vite preview"
+    "build": "react-scripts build"
   },
   "dependencies": {
+    "@nebulr-group/nblocks-react": "^3.0.0",
     "chart.js": "^4.4.2",
     "chartjs-adapter-moment": "^1.0.1",
     "jose": "^4.14.4",

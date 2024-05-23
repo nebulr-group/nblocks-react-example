@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import {
-  useLocation
-} from 'react-router-dom';
+import React, { useState } from 'react';
+import { NblocksProvider } from '@nebulr-group/nblocks-react';
 import Sidebar from './partials/Sidebar';
 import "./App.css";
 import './charts/ChartjsConfig';
@@ -11,16 +9,17 @@ import AppRoutes from './Routes';
 
 function App() {
 
-  const location = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
+    <NblocksProvider config={{appId: ""}}>
       <div className="w-full flex h-screen">
         <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
         <div className="overflow-y-auto w-full flex justify-center nblocks-router">
           <AppRoutes />
         </div>
-      </div>    
+      </div>
+    </NblocksProvider>
   );
 }
 
