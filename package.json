@@ -6,7 +6,6 @@
     "build": "react-scripts build"
   },
   "dependencies": {
-    "@nebulr-group/nblocks-react": "^3.0.0",
     "chart.js": "^4.4.2",
     "chartjs-adapter-moment": "^1.0.1",
     "jose": "^4.14.4",

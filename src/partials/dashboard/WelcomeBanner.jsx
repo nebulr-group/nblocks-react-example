@@ -1,8 +1,5 @@
-import { useMe } from '@nebulr-group/nblocks-react';
 import React from 'react';
 function WelcomeBanner() {
-
-  const {profile} = useMe();
 
   return (
     <div className="relative bg-indigo-200 p-4 sm:p-6 rounded-sm overflow-hidden mb-8">
@@ -51,7 +48,7 @@ function WelcomeBanner() {
 
       {/* Content */}
       <div className="relative">
-        <h1 className="text-2xl md:text-3xl text-slate-800 font-bold mb-1">Good afternoon {profile?.givenName}👋</h1>
+        <h1 className="text-2xl md:text-3xl text-slate-800 font-bold mb-1">Good afternoon 👋</h1>
         <p>Here is what’s happening with your projects today:</p>
       </div>
 
