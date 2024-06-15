@@ -10,8 +10,10 @@ import {
 } from '@nebulr-group/nblocks-react';
 import Analytics from "./pages/Analytics";
 import Dashboard from "./pages/Dashboard";
+import Layout from "./partials/Layout";
 
 function AppRoutes() {
+  
   return (
     <Routes>
       <Route exact path="/login" element={<LoginComponent />}/>
@@ -19,13 +21,15 @@ function AppRoutes() {
       <Route exact path="/auth/oauth-callback" element={<CallbackComponent />}/>
       <Route path="*" element={
         <ProtectedRouteComponent>
-          <Routes>
-            <Route exact path="/team" element={<TeamComponent />}/>
-            <Route exact path="/subscription" element={<SubscriptionComponent />}/>
-            <Route exact path="/dashboard" element={<Dashboard />}/>
-            <Route exact path="/analytics" element={<Analytics />}/>
-            <Route path="*" element={<Navigate to="/dashboard" replace={true} />}/>
-          </Routes>
+          <Layout>
+            <Routes>
+              <Route exact path="/team" element={<TeamComponent />}/>
+              <Route exact path="/subscription" element={<SubscriptionComponent />}/>
+              <Route exact path="/dashboard" element={<Dashboard />}/>
+              <Route exact path="/analytics" element={<Analytics />}/>
+              <Route path="*" element={<Navigate to="/dashboard" replace={true} />}/>
+            </Routes>
+          </Layout>
         </ProtectedRouteComponent>
         }
         />
