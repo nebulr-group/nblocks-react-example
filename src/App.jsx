@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import Sidebar from './partials/Sidebar';
+import React from 'react';
 import "./App.css";
 import './charts/ChartjsConfig';
 
@@ -8,15 +7,8 @@ import AppRoutes from './Routes';
 
 function App() {
 
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-
   return (
-    <div className="w-full flex h-screen">
-      <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-      <div className="overflow-y-auto w-full flex justify-center nblocks-router">
-        <AppRoutes />
-      </div>
-    </div>
+    <AppRoutes />
   );
 }
 
